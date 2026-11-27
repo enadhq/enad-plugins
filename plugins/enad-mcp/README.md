@@ -8,6 +8,6 @@ Try asking “Use Enad to find the documentation on attribute templates” or �
 
 [Installation and support](https://github.com/enadhq/enad-plugins#enad) · [Enad privacy policy](https://enad.io/legal/privacy-policy)
 
-To install from Claude Code, run `/plugin install enad --marketplace enadhq/enad-plugins`.
+To install from Claude Code, run `/plugin install enad-mcp --marketplace enadhq/enad-plugins`.
 
 The MIT license applies to the plugin configuration and documentation. Data Management Enad AB retains all rights in the Enad name and logo.

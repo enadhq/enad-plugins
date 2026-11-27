@@ -5,7 +5,7 @@
   },
   "plugins": [
     {
-      "name": "enad",
+      "name": "enad-mcp",
       "source": {
         "source": "local",
         "path": "./plugins/enad-mcp"
