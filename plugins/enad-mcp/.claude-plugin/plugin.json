@@ -1,10 +1,14 @@
 {
   "name": "enad-mcp",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Connect to Enad for documentation and catalog workflows.",
   "author": {
     "name": "Enad"
   },
   "homepage": "https://enad.io",
-  "repository": "https://github.com/enadhq/enad-plugins"
+  "repository": "https://github.com/enadhq/enad-plugins",
+  "displayName": "Enad MCP",
+  "icon": "./assets/enad.png",
+  "privacyPolicyUrl": "https://enad.io/legal/privacy-policy",
+  "license": "MIT"
 }
