@@ -1,0 +1,14 @@
+{
+  "name": "enad",
+  "description": "Plugins for connecting to Enad.",
+  "owner": {
+    "name": "Enad"
+  },
+  "plugins": [
+    {
+      "name": "enad-mcp",
+      "source": "./plugins/enad-mcp",
+      "description": "Connect to Enad for documentation and catalog workflows."
+    }
+  ]
+}

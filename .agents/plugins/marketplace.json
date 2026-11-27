@@ -1,0 +1,20 @@
+{
+  "name": "enad",
+  "interface": {
+    "displayName": "Enad"
+  },
+  "plugins": [
+    {
+      "name": "enad-mcp",
+      "source": {
+        "source": "local",
+        "path": "./plugins/enad-mcp"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "enad": {
+      "type": "http",
+      "url": "https://mcp.enad.io/mcp"
+    }
+  }
+}

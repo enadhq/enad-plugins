@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "enad-mcp",
+  "version": "0.1.0",
+  "description": "Connect to Enad for documentation and catalog workflows.",
+  "author": {
+    "name": "Enad"
+  },
+  "homepage": "https://enad.io",
+  "repository": "https://github.com/enadhq/enad-plugins",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Enad MCP",
+        "shortDescription": "Search Enad docs and work with your catalog.",
+        "developerName": "Enad",
+        "category": "Productivity"
+      }
+    }
+  }
+}
