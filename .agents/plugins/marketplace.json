@@ -8,7 +8,7 @@
       "name": "enad",
       "source": {
         "source": "local",
-        "path": "./plugins/enad"
+        "path": "./plugins/enad-mcp"
       },
       "policy": {
         "installation": "AVAILABLE",
