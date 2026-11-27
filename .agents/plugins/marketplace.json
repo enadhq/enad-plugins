@@ -5,10 +5,10 @@
   },
   "plugins": [
     {
-      "name": "enad-mcp",
+      "name": "enad",
       "source": {
         "source": "local",
-        "path": "./plugins/enad-mcp"
+        "path": "./plugins/enad"
       },
       "policy": {
         "installation": "AVAILABLE",

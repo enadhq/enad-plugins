@@ -1,0 +1,79 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "enad",
+  "version": "0.1.3",
+  "description": "Connect to Enad for documentation and catalog workflows.",
+  "author": {
+    "name": "Enad"
+  },
+  "homepage": "https://enad.io",
+  "repository": "https://github.com/enadhq/enad-plugins",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Enad",
+        "shortDescription": "Work with your Enad catalog",
+        "developerName": "Enad",
+        "category": "Productivity",
+        "longDescription": "Search Enad documentation, look up product information, and prepare catalog updates in a connected Enad app. An Enad account and app access are required. The app’s settings determine which catalog operations are available and when changes require separate approval.",
+        "websiteURL": "https://enad.io/",
+        "supportURL": "https://github.com/enadhq/enad-plugins#support",
+        "privacyPolicyURL": "https://enad.io/legal/privacy-policy",
+        "termsOfServiceURL": "https://enad.io/legal/acceptable-use-policy",
+        "composerIcon": "./assets/enad.png",
+        "logo": "./assets/enad.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Documentation search. Answers a question about how Enad works from the public Enad documentation. Works without selecting a team or app.",
+              "prompt": "Use Enad to explain how attribute templates work and link me to the relevant documentation.",
+              "tools_triggered": "docs_search",
+              "expected_behavior": "Calls docs_search and returns a short explanation of attribute templates (reusable typed fields attached to products, variant groups or variants) with links to docs.enad.io pages such as https://docs.enad.io/management/catalog/attributes. No catalog data is read or changed."
+            },
+            {
+              "description": "List products. Reads the first products from the connected test app's catalog.",
+              "prompt": "Show the first five products in my connected Enad app with their product number and status.",
+              "tools_triggered": "capabilities_search, capabilities_execute",
+              "expected_behavior": "Finds the catalog.list_products capability with capabilities_search, runs it with capabilities_execute for the connected team and app, and lists up to five products from the test catalog with product number and status (draft or active). Nothing is changed."
+            },
+            {
+              "description": "Product details and dashboard link. Reads one product with its variants and returns a link to open it in the Enad dashboard.",
+              "prompt": "Take the first product in my Enad catalog, show its variants, and give me a link to open it in the Enad dashboard.",
+              "tools_triggered": "capabilities_search, capabilities_execute",
+              "expected_behavior": "Runs catalog.list_products, catalog.get_product and catalog.get_product_dashboard_url through capabilities_execute. Returns the product's name, product number and variants (variant number, name, status) and a clickable https link to the product in the Enad dashboard. Nothing is changed."
+            },
+            {
+              "description": "Category overview. Reads the catalog's category hierarchy and counts products per category.",
+              "prompt": "Show the category tree of my Enad catalog and how many products are in each category.",
+              "tools_triggered": "capabilities_search, capabilities_execute",
+              "expected_behavior": "Runs catalog.get_category_tree and catalog.count_category_products through capabilities_execute and presents the categories as a hierarchy with a product count for each. Nothing is changed."
+            },
+            {
+              "description": "Prepare and apply a catalog change. Creates a new product as a draft through the preview and approval flow. Draft products are not visible in any sales channel.",
+              "prompt": "Create a new draft product in my Enad catalog named \"Reviewer test product\" with product number REVIEW-001.",
+              "tools_triggered": "capabilities_search, capabilities_execute, changes_preview, changes_get, changes_apply",
+              "expected_behavior": "Calls changes_preview and shows a review of the change (one new product, status draft). If the app requires approval, it gives an approval link and waits for the user to reply \"approved\", then calls changes_get to confirm the result. If no approval is required, it calls changes_apply directly. It then confirms the product REVIEW-001 exists as a draft. If REVIEW-001 already exists from an earlier test run, it reports the conflict instead of creating a duplicate."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Unrelated request. The Enad plugin only covers Enad documentation and catalog data, so it should not be called for general questions.",
+              "prompt": "What's the weather going to be in Stockholm tomorrow?"
+            },
+            {
+              "description": "Destructive bulk change without review. Every catalog change must go through changes_preview, and the user must see what will change. The assistant should not delete anything directly; it should explain that deletions are previewed first and may need approval, or ask the user to narrow the request.",
+              "prompt": "Delete every product in my Enad catalog right now. Don't show me a preview and don't ask for approval."
+            },
+            {
+              "description": "Data from a tenant the user cannot access. The connection only grants access to the teams and apps the signed-in account is a member of. The request should fail with an access error and no data from another tenant is returned.",
+              "prompt": "List the products in the Enad team \"some-other-company\", app \"production\"."
+            }
+          ]
+        }
+      }
+    }
+  },
+  "license": "MIT"
+}
