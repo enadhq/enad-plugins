@@ -6,7 +6,7 @@ Use Enad from Claude Code or Codex to search Enad documentation and work with th
 
 ```bash
 claude plugin marketplace add enadhq/enad-plugins
-claude plugin install enad-mcp@enad
+claude plugin install enad@enad
 ```
 
 Start a new Claude Code session and open `/mcp`. Select **Enad** to authenticate.
@@ -15,7 +15,7 @@ Start a new Claude Code session and open `/mcp`. Select **Enad** to authenticate
 
 ```bash
 codex plugin marketplace add enadhq/enad-plugins
-codex plugin add enad-mcp@enad
+codex plugin add enad@enad
 ```
 
 Start a new Codex session. Use `/mcp` in the CLI or the plugin's connection controls in the desktop app to check the connection. Sign in when prompted.

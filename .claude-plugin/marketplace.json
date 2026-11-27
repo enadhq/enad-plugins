@@ -6,7 +6,7 @@
   },
   "plugins": [
     {
-      "name": "enad-mcp",
+      "name": "enad",
       "source": "./plugins/enad-mcp",
       "description": "Connect to Enad for documentation and catalog workflows."
     }
