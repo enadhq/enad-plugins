@@ -1,6 +1,6 @@
 {
   "name": "enad-mcp",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Connect to Enad for documentation and catalog workflows.",
   "author": {
     "name": "Enad"
